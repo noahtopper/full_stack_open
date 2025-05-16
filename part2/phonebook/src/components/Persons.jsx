@@ -1,8 +1,14 @@
-const Entry = ({ person }) => <div>{person.name} {person.number}</div>
-const Persons = ({ persons }) => {
+import Button from './Button'
+
+const Entry = ({ person, onClick }) => {
+   return (
+      <div>{person.name} {person.number} <Button text="delete" onClick={onClick}/></div>
+   )
+}
+const Persons = ({ persons, getDeleteHandler }) => {
    return (
       <div>
-         {persons.map(person => <Entry key={person.name} person={person} />)}
+         {persons.map(person => <Entry key={person.name} person={person} onClick={getDeleteHandler(person)} />)}
       </div>
    )
 }
